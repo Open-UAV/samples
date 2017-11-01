@@ -15,7 +15,7 @@ python /simulation/inputs/controllers/test_2_Follow.py 3 2 3 &> /dev/null &
 
 echo "measures"
 python /simulation/inputs/measures/measureInterRobotDistance.py 2 1 &> /dev/null &
-
+roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
 
 tail -f /dev/null
 

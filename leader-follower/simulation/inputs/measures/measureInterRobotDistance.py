@@ -33,8 +33,8 @@ class MeasureInterRobotDistance:
 
 
     def __init__(self, this_uav, leader_uav):
-        rospy.init_node('measure_interrobot_distance', anonymous=True)
-        measure_pub = rospy.Publisher('/measure/interrobot_distance', Float64, queue_size=10)
+        rospy.init_node('measure', anonymous=True)
+        self.measure_pub = rospy.Publisher('/measure', Float64, queue_size=10)
         rospy.Subscriber('/mavros' + leader_uav + '/local_position/pose', PoseStamped, callback=self.leader_cb)
         rospy.Subscriber('/mavros' + this_uav + '/local_position/pose', PoseStamped, callback=self.follower_cb)
 
@@ -42,7 +42,7 @@ class MeasureInterRobotDistance:
         rate.sleep()
 
         while not rospy.is_shutdown():
-            self.measureDistance()
+            self.measure = self.measureDistance()
             self.measure_pub.publish(self.measure)
             rate.sleep()
 
