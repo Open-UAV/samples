@@ -26,8 +26,8 @@ done
 
 sleep 10
 echo "Monitors..."
-#roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
-#rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
+roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
+rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
 
 tail -f /dev/null
 
