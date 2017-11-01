@@ -16,7 +16,7 @@ python /simulation/inputs/controllers/test_1_Loop.py 5 1 1 0 &> /dev/null &
 python /simulation/inputs/controllers/test_2_Follow.py 2 1 2 &> /dev/null &
 python /simulation/inputs/controllers/test_2_Follow.py 3 2 3 &> /dev/null &
 
-echo "measures"
+echo "Measures..."
 python /simulation/inputs/measures/measureInterRobotDistance.py 2 1 &> /dev/null &
 roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
 
@@ -26,6 +26,7 @@ do
 done
 
 sleep 10
+echo "Monitors..."
 rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
 
 tail -f /dev/null
