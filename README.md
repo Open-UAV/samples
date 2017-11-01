@@ -22,7 +22,7 @@ leader-follower/
     │       └── empty.world
     └── run_this.sh
 ```
-There are many ways to run the simulation on the OpenUAV Playground, below is one example from a remote Ubuntu box with the correct SSH keys to talk to the OpenUAV Platground server. The username is 'jdas' in this example. 
+There are many ways to run the simulation on the OpenUAV Playground, below is one example from a remote Ubuntu box with the correct SSH keys to talk to the OpenUAV Playground server. The username is 'jdas' in this example. 
 
 ```
 :~$ scp -r /home/nsf/PycharmProjects/Open-UAV/examples/leader-follower/simulation/ jdas@label.ag:~/ && \
