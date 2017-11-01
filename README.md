@@ -45,4 +45,4 @@ measure.csv  uav1.csv  uav2.csv  uav3.csv
 
 ## Running your first simulation
 
-1. Talk to the project administrators for an account on the OpenUAV server account and set up SSH keys
+1. Talk to the project administrators for an account on the OpenUAV server and set up SSH keys
