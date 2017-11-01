@@ -2,9 +2,12 @@
 source /root/.profile 
 source /simulation/inputs/parameters/swarm.sh
 
+Xvfb :1 -screen 0 1600x1200x16  &
+export DISPLAY=:1.0
+
 echo "Setup..."
 python /simulation/inputs/setup/testCreateUAVSwarm.py $num_uavs &
-sleep 15
+sleep 25
 python /simulation/inputs/setup/testArmAll.py $num_uavs &
 
 
@@ -22,7 +25,8 @@ do
     /usr/bin/python -u /opt/ros/jade/bin/rostopic echo -p /mavros$i/local_position/pose > /simulation/outputs/uav$i.csv &
 done
 
-bash /root/gzweb/start_gzweb.sh -p 286 &>/dev/null &
+sleep 10
+rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
 
 tail -f /dev/null
 
