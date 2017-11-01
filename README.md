@@ -33,13 +33,13 @@ leader-follower/
 Shown below is an example simulation from remote Ubuntu box with the SSH keys to talk to the OpenUAV Playground server. The username is 'jdas', replace with your own username when trying to run on your machine. 
 
 ```
-:~$ name=openuav-${3:-`date +%s`} 
+:~$ name=openuav-${3:-`date +%s`}-$(uuidgen) 
 :~$ scp -r /home/nsf/PycharmProjects/Open-UAV/examples/leader-follower/simulation/ jdas@label.ag:~/"simulation-"$name
 :~$ ssh jdas@label.ag "nvidia-docker run -dit -v ~/\"simulation-\"$name/:/simulation --name $name openuav-swarm-functional"
 ```
 You can combine the above three commands. 
 ```
-:~$ name=openuav-${3:-`date +%s`} && echo $name && scp -r /home/nsf/PycharmProjects/Open-UAV/examples/leader-follower/simulation/ jdas@label.ag:~/"simulation-"$name && ssh jdas@label.ag "nvidia-docker run -dit -v ~/\"simulation-\"$name/:/simulation --name $name openuav-swarm-functional"
+:~$ name=openuav-${3:-`date +%s`}-$(uuidgen) && echo $name && scp -r /home/nsf/PycharmProjects/Open-UAV/examples/leader-follower/simulation/ jdas@label.ag:~/"simulation-"$name && ssh jdas@label.ag "nvidia-docker run -dit -v ~/\"simulation-\"$name/:/simulation --name $name openuav-swarm-functional"
 ```
 
 The logs are stored in the simulation/outputs folder as a list of CSV files. 
