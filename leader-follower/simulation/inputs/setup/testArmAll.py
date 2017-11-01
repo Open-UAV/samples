@@ -34,7 +34,6 @@ data = [None for i in range(NUM_UAV)]
 while None in data:
     for uavID in range(0, NUM_UAV):
         try:
-            print mavrosTopicStringRoot(uavID) + '/global_position/rel_alt'
             data[uavID] = rospy.wait_for_message(mavrosTopicStringRoot(uavID) + '/global_position/rel_alt', Float64, timeout=5)
         except:
             pass
