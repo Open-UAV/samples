@@ -38,6 +38,11 @@ Shown below is an example simulation from remote Ubuntu box with the SSH keys to
 ```
 
 The logs are stored in the simulation/outputs folder as a list of CSV files. 
+```
+jdas@airborne:~$ ls  ~/simulation/outputs/
+measure.csv  uav1.csv  uav2.csv  uav3.csv
+````
+
 ## Running your first simulation
 
 1. Talk to the project administrators for an account on the OpenUAV server account and set up SSH keys
