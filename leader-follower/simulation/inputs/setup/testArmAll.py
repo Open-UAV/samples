@@ -23,7 +23,6 @@ def mavrosTopicStringRoot(uavID=0):
 
 rospy.init_node('multi', anonymous=True)
 
-
 #Comm for drones
 for uavID in range(0,NUM_UAV):
     mode_proxy[uavID] = rospy.ServiceProxy(mavrosTopicStringRoot(uavID) + '/set_mode', SetMode)

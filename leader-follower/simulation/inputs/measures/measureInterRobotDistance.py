@@ -32,19 +32,19 @@ class MeasureInterRobotDistance:
         return math.sqrt((follower_x - leader_x) * (follower_x - leader_x) + (follower_y - leader_y) * (follower_y - leader_y) + (follower_z - leader_z) * (follower_z - leader_z))
 
 
-def __init__(self, this_uav, leader_uav):
-    rospy.init_node('measure_interrobot_distance', anonymous=True)
-    measure_pub = rospy.Publisher('/measure/interrobot_distance', Float64, queue_size=10)
-    rospy.Subscriber('/mavros' + leader_uav + '/local_position/pose', PoseStamped, callback=self.leader_cb)
-    rospy.Subscriber('/mavros' + this_uav + '/local_position/pose', PoseStamped, callback=self.follower_cb)
+    def __init__(self, this_uav, leader_uav):
+        rospy.init_node('measure_interrobot_distance', anonymous=True)
+        measure_pub = rospy.Publisher('/measure/interrobot_distance', Float64, queue_size=10)
+        rospy.Subscriber('/mavros' + leader_uav + '/local_position/pose', PoseStamped, callback=self.leader_cb)
+        rospy.Subscriber('/mavros' + this_uav + '/local_position/pose', PoseStamped, callback=self.follower_cb)
 
-    rate = rospy.Rate(10)  # Hz
-    rate.sleep()
-
-    while not rospy.is_shutdown():
-        self.measureDistance()
-        measure_pub.publish(self.measure)
+        rate = rospy.Rate(10)  # Hz
         rate.sleep()
+
+        while not rospy.is_shutdown():
+            self.measureDistance()
+            self.measure_pub.publish(self.measure)
+            rate.sleep()
 
 if __name__ == "__main__":
     MeasureInterRobotDistance(sys.argv[1], sys.argv[2])
