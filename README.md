@@ -34,7 +34,7 @@ Shown below is an example simulation from remote Ubuntu box with the SSH keys to
 
 ```
 :~$ scp -r /home/nsf/PycharmProjects/Open-UAV/examples/leader-follower/simulation/ jdas@label.ag:~/ 
-:~$ ssh jdas@label.ag 'nvidia-docker run -dit -v ~/simulation/:/simulation --name "openuav-"${3:-`date +%s`} openuav-swarm-functional /simulation/run_this.sh'
+:~$ ssh jdas@label.ag 'nvidia-docker run -dit -v ~/simulation/:/simulation --name "openuav-"${3:-`date +%s`} openuav-swarm-functional'
 ```
 
 The logs are stored in the simulation/outputs folder as a list of CSV files. 
