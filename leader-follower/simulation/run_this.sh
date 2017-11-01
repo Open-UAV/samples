@@ -22,7 +22,8 @@ do
     /usr/bin/python -u /opt/ros/jade/bin/rostopic echo -p /mavros$i/local_position/pose > /simulation/outputs/uav$i.csv &
 done
 
-bash ~/gzweb/start_gzweb
+bash /root/gzweb/start_gzweb.sh -p 286 &>/dev/null &
+
 tail -f /dev/null
 
 
