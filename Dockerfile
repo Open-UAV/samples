@@ -105,10 +105,10 @@ RUN cd ~/src/Firmware && \
 RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
     echo "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
     echo "source ~/catkin_ws/devel/setup.bash" >> ~/.profile && \
-    export GAZEBO_PLUGIN_PATH=:/root/src/Firmware/Tools/sitl_gazebo/Build && \
-    export GAZEBO_MODEL_PATH=:/root/src/Firmware/Tools/sitl_gazebo/models && \
-    export GAZEBO_RESOURCE_PATH=:/root/src/Firmware/Tools/sitl_gazebo/media && \
-    export PYTHONPATH=/root/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/jade/lib/python2.7/dist-packages
+    echo "export GAZEBO_PLUGIN_PATH=:/root/src/Firmware/Tools/sitl_gazebo/Build" >> ~/.profile && \
+    echo "export GAZEBO_MODEL_PATH=:/root/src/Firmware/Tools/sitl_gazebo/models" >> ~/.profile && \
+    echo "export GAZEBO_RESOURCE_PATH=:/root/src/Firmware/Tools/sitl_gazebo/media" >> ~/.profile && \
+    echo "export PYTHONPATH=/root/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/jade/lib/python2.7/dist-packages" >> ~/.profile
 
 WORKDIR /root
 
