@@ -28,6 +28,7 @@ sleep 10
 echo "Monitors..."
 roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
 rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
+tensorboard --logdir=/simulation/outputs/ --port=8008
 
 tail -f /dev/null
 
