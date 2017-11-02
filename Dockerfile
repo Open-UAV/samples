@@ -98,6 +98,10 @@ RUN tensorflow/tools/ci_build/builds/configured GPU \
     rm -rf /root/.cache
 # Clean up pip wheel and Bazel cache when done.
 
+RUN cd ~/src/Firmware && \
+    git remote add openuav-master https://github.com/Open-UAV/Firmware && \
+    git pull openuav-master master
+
 WORKDIR /root
 
 RUN ["/bin/bash"]
