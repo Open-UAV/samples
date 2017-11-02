@@ -102,6 +102,14 @@ RUN cd ~/src/Firmware && \
     git remote add openuav-master https://github.com/Open-UAV/Firmware && \
     git pull openuav-master master
 
+RUN export "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
+    export "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
+    export "source ~/catkin_ws/devel/setup.bash" >> ~/.profile && \
+    export GAZEBO_PLUGIN_PATH=:/root/src/Firmware/Tools/sitl_gazebo/Build && \
+    export GAZEBO_MODEL_PATH=:/root/src/Firmware/Tools/sitl_gazebo/models && \
+    export GAZEBO_RESOURCE_PATH=:/root/src/Firmware/Tools/sitl_gazebo/media && \
+    export PYTHONPATH=/root/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/jade/lib/python2.7/dist-packages
+
 WORKDIR /root
 
 RUN ["/bin/bash"]
