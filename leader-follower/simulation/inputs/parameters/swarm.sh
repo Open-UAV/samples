@@ -1,2 +1,2 @@
 #!/bin/bash
-num_uavs=3
+num_uavs=2
