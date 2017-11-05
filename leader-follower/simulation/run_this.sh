@@ -14,6 +14,8 @@ python /simulation/inputs/setup/testArmAll.py $num_uavs &
 echo "Controllers..."
 python /simulation/inputs/controllers/test_1_Loop.py 5 1 1 0 &> /dev/null & 
 python /simulation/inputs/controllers/test_2_Follow.py 2 1 2 &> /dev/null &
+python /simulation/inputs/controllers/test_3_Follow.py 3 1 3 &> /dev/null &
+
 
 echo "Measures..."
 python /simulation/inputs/measures/measureInterRobotDistance.py 2 1 &> /dev/null &
@@ -26,11 +28,12 @@ done
 
 sleep 10
 echo "Monitors..."
-roslaunch rosbridge_server rosbridge_websocket.launch port:=2090 ssl:=true &> /dev/null &
-rosrun web_video_server web_video_server _port:=2002 &> /dev/null &
-tensorboard --logdir=/simulation/outputs/ --port=8008
+roslaunch rosbridge_server rosbridge_websocket.launch ssl:=false &> /dev/null &
+rosrun web_video_server web_video_server _port:=80 &> /dev/null &
+tensorboard --logdir=/simulation/outputs/ --port=8008 &> /dev/null &
 
 tail -f /dev/null
+
 
 
 
