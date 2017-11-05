@@ -1,4 +1,5 @@
 """
+Authors: Arjun Kumar and Jnaneshwar Das
 testing offboard positon control with a simple takeoff script
 """
 

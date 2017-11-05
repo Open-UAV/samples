@@ -1,4 +1,5 @@
 """
+Author: Jnaneshwar Das <jnaneshwar.das@gmail.com> 
 testing looping behavior across a set of waypoints using offboard control
 """
 
