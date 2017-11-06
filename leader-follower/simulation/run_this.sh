@@ -1,6 +1,8 @@
 #!/bin/bash
 source /root/.profile 
 source /simulation/inputs/parameters/swarm.sh
+rm /simulation/outputs/*.csv
+
 
 Xvfb :1 -screen 0 1600x1200x16  &
 export DISPLAY=:1.0
@@ -32,8 +34,7 @@ roslaunch rosbridge_server rosbridge_websocket.launch ssl:=false &> /dev/null &
 rosrun web_video_server web_video_server _port:=80 &> /dev/null &
 tensorboard --logdir=/simulation/outputs/ --port=8008 &> /dev/null &
 
-tail -f /dev/null
-
+sleep $duration_seconds
 
 
 
