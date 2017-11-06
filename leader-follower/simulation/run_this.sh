@@ -9,16 +9,18 @@ export DISPLAY=:1.0
 
 echo "Setup..."
 python /simulation/inputs/setup/testCreateUAVSwarm.py $num_uavs &
-sleep 25
+sleep 15
 python /simulation/inputs/setup/testArmAll.py $num_uavs &
 
 
 echo "Controllers..."
 python /simulation/inputs/controllers/test_1_Loop.py 5 1 1 0 &> /dev/null & 
-python /simulation/inputs/controllers/test_2_Follow.py 2 1 2 &> /dev/null &
-python /simulation/inputs/controllers/test_3_Follow.py 3 1 3 &> /dev/null &
+sleep 2
+python /simulation/inputs/controllers/test_3_Follow.py 3 1 3 1.5 &> /dev/null &
+sleep 2
+python /simulation/inputs/controllers/test_3_Follow.py 2 3 2 $FOLLOW_D_GAIN &> /dev/null &
 
-
+sleep 10
 echo "Measures..."
 python /simulation/inputs/measures/measureInterRobotDistance.py 2 1 &> /dev/null &
 
@@ -28,13 +30,16 @@ do
 done
 /usr/bin/python -u /opt/ros/jade/bin/rostopic echo -p /measure > /simulation/outputs/measure.csv &
 
-sleep 10
+sleep 5
 echo "Monitors..."
 roslaunch rosbridge_server rosbridge_websocket.launch ssl:=false &> /dev/null &
 rosrun web_video_server web_video_server _port:=80 &> /dev/null &
 tensorboard --logdir=/simulation/outputs/ --port=8008 &> /dev/null &
 
 sleep $duration_seconds
+echo $FOlLOW_D_GAIN > /simulation/outputs/average_measure
+echo ", " >> /simulation/outputs/average_measure
+cat /simulation/outputs/measure.csv | awk -F',' '{sum+=$2; ++n} END { print sum/n }' >> /simulation/outputs/average_measure
 
 
 

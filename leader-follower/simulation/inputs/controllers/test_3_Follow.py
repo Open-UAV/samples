@@ -16,10 +16,12 @@ class TestFollow:
     des_pose = PoseStamped()
     leader_pose = PoseStamped()
     leader_vel = TwistStamped()
+   
+
     isReadyToFly = False
     #alpha = .7#const scale of leader velocity
 
-    def __init__(self, this_uav,leader_uav, H):
+    def __init__(self, this_uav,leader_uav, H, D_GAIN):
         rospy.init_node('offboard_test', anonymous=True)
 
         pose_pub = rospy.Publisher('/mavros'+ this_uav + '/setpoint_position/local', PoseStamped, queue_size=10)
@@ -35,8 +37,8 @@ class TestFollow:
 
         while not rospy.is_shutdown():
             if self.isReadyToFly:
-                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x * 2.5)  
-                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y * 2.5)
+                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x * D_GAIN)  
+                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y * D_GAIN)
                 self.des_pose.pose.position.z = H
                 self.des_pose.pose.orientation = self.leader_pose.pose.orientation
 
@@ -68,4 +70,4 @@ class TestFollow:
             print "readyToFly"
 
 if __name__ == "__main__":
-    TestFollow(sys.argv[1], sys.argv[2], float(sys.argv[3]))
+    TestFollow(sys.argv[1], sys.argv[2], float(sys.argv[3]), float(sys.argv[4]))
