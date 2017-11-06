@@ -20,7 +20,7 @@ python /simulation/inputs/setup/testArmAll.py $num_uavs &> /dev/null &
 echo "Controllers..."
 python /simulation/inputs/controllers/test_1_Loop.py 5 1 1 0 &> /dev/null & 
 sleep 2
-python /simulation/inputs/controllers/test_3_Follow.py 3 1 3 1.5 &> /dev/null &
+python /simulation/inputs/controllers/test_3_Follow.py 3 1 3 0 &> /dev/null &
 sleep 2
 python /simulation/inputs/controllers/test_3_Follow.py 2 1 2 $FOLLOW_D_GAIN &> /dev/null &
 
