@@ -27,7 +27,7 @@ class TestFollow:
         pose_pub = rospy.Publisher('/mavros'+ this_uav + '/setpoint_position/local', PoseStamped, queue_size=10)
 
         rospy.Subscriber('/mavros'+ leader_uav + '/local_position/pose', PoseStamped, callback=self.leader_cb)
-        rospy.Subscriber('/mavros'+ leader_uav + '/local_position/pose', PoseStamped, callback=self.follower_cb)
+        rospy.Subscriber('/mavros'+ this_uav + '/local_position/pose', PoseStamped, callback=self.follower_cb)
         rospy.Subscriber('/mavros'+ this_uav + '/state', State, callback=self.state_cb)
 	rospy.Subscriber('/mavros'+ leader_uav + '/local_position/velocity', TwistStamped, callback=self.leaderVel_cb)
 
