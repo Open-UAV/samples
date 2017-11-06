@@ -29,7 +29,9 @@ class MeasureInterRobotDistance:
         leader_y = self.leader_pose.pose.position.y
         leader_z = self.leader_pose.pose.position.z
 
-        return math.sqrt((follower_x - leader_x) * (follower_x - leader_x) + (follower_y - leader_y) * (follower_y - leader_y) + (follower_z - leader_z) * (follower_z - leader_z))
+        return math.sqrt((follower_x - leader_x) * (follower_x - leader_x) + (follower_y - leader_y) * (follower_y - leader_y))
+
+# + (follower_z - leader_z) * (follower_z - leader_z))
 
 
     def __init__(self, this_uav, leader_uav):

@@ -35,8 +35,8 @@ class TestFollow:
 
         while not rospy.is_shutdown():
             if self.isReadyToFly:
-                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x * 1.5)  
-                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y * 1.5)
+                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x * 2.5)  
+                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y * 2.5)
                 self.des_pose.pose.position.z = H
                 self.des_pose.pose.orientation = self.leader_pose.pose.orientation
 
