@@ -1,6 +1,6 @@
 ## OpenUAV Playbook example (leader-follower)
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/H5yPj0b8p7g/0.jpg)](https://youtu.be/H5yPj0b8p7g)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/-Xui3q5_jVs/0.jpg)](https://youtu.be/-Xui3q5_jVs)
 
 The folder structure for the template simulation payload is shown below. Any simulation needs six inputs listed below. 
 - drone models
