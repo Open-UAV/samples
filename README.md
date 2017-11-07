@@ -2,6 +2,9 @@
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/-Xui3q5_jVs/0.jpg)](https://youtu.be/-Xui3q5_jVs)
 
+
+The video shows an example with a leader, and two followers with different controllers. The source payload archived version of https://github.com/Open-UAV/samples/tree/master/leader-follower/ . 
+
 The folder structure for the template simulation payload is shown below. Any simulation needs six inputs listed below. 
 - drone models
 - simulation world 
