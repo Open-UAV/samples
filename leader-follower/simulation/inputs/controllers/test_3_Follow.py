@@ -34,12 +34,10 @@ class TestFollow:
         rate = rospy.Rate(10)  # Hz
         rate.sleep()
         self.des_pose = self.copy_pose(self.curr_pose)
-        distance = math.sqrt((self.curr_pose.pose.position.x - self.leader_pose.pose.position.x) * (self.curr_pose.pose.position.x - self.leader_pose.pose.position.x) + (self.curr_pose.pose.position.y - self.leader_pose.pose.position.y) * (self.curr_pose.pose.position.y - self.leader_pose.pose.position.y))
-        dist_D_GAIN = D_GAIN;
         while not rospy.is_shutdown():
             if self.isReadyToFly:
-                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x*dist_D_GAIN)
-                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y*dist_D_GAIN)
+                self.des_pose.pose.position.x = self.leader_pose.pose.position.x + (self.leader_vel.twist.linear.x*D_GAIN)
+                self.des_pose.pose.position.y = self.leader_pose.pose.position.y + (self.leader_vel.twist.linear.y*D_GAIN)
                 self.des_pose.pose.position.z = H
                 self.des_pose.pose.orientation = self.leader_pose.pose.orientation
 

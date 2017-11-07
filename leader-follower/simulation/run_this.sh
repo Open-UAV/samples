@@ -10,11 +10,7 @@ export DISPLAY=:1.0
 echo "Setup..."
 python /simulation/inputs/setup/testCreateUAVSwarm.py $num_uavs &> /dev/null &
 sleep 10
-echo "Monitors..."
-roslaunch rosbridge_server rosbridge_websocket.launch ssl:=false &> /dev/null &
-rosrun web_video_server web_video_server _port:=80 &> /dev/null &
-tensorboard --logdir=/simulation/outputs/ --port=8008 &> /dev/null &
-sleep 5
+echo "ROSbridge..."
 python /simulation/inputs/setup/testArmAll.py $num_uavs &> /dev/null &
 
 echo "Controllers..."
@@ -28,6 +24,9 @@ python /simulation/inputs/controllers/test_3_Follow.py 2 1 2 $FOLLOW_D_GAIN &> /
 echo "Measures..."
 python /simulation/inputs/measures/measureInterRobotDistance.py 2 1 &> /dev/null &
 
+roslaunch rosbridge_server rosbridge_websocket.launch ssl:=false &> /dev/null &
+rosrun web_video_server web_video_server _port:=80 &> /dev/null &
+tensorboard --logdir=/simulation/outputs/ --port=8008 &> /dev/null &
 for((i=1;i<=$num_uavs;i+=1))
 do
     /usr/bin/python -u /opt/ros/jade/bin/rostopic echo -p /mavros$i/local_position/odom > /simulation/outputs/uav$i.csv &
