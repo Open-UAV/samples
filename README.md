@@ -1,9 +1,9 @@
 ## OpenUAV Playbook example (leader-follower)
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/FeRx0HS1jgY/0.jpg)](https://youtu.be/FeRx0HS1jgY)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/WXtX3n7xSmo/0.jpg)](https://youtu.be/WXtX3n7xSmo)
 
 
-The video shows an example with a leader, and two followers with different controllers. The source payload is a zip archive file for https://github.com/Open-UAV/samples/tree/master/leader-follower/ . 
+The video shows an example with 6 UAVs flying in a leader-follower configuration. 
 
 The folder structure for the template simulation payload is shown below. Any simulation needs six inputs listed below. 
 - drone models
