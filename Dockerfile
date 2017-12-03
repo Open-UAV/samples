@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y apt-utils \
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
+        geographiclib-tools \
         libcurl3-dev \
         libfreetype6-dev \
         libpng12-dev \
@@ -29,6 +30,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN git clone https://github.com/schmittlema/ros-setups.git && cd ros-setups/ubuntu-16 && ./setup-ros.sh && ./setup-mavlink-mavros.sh && ./setup-install.sh && ./setup-gym-gzweb-uavnav.sh
 
+RUN apt-get install -y --no-install-recommends ros-kinetic-web-video-server \
+        ros-kinetic-image-geometry
+        
 
 RUN curl -fSsL -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
