@@ -30,9 +30,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN git clone https://github.com/schmittlema/ros-setups.git && cd ros-setups/ubuntu-16 && ./setup-ros.sh && ./setup-mavlink-mavros.sh && ./setup-install.sh && ./setup-gym-gzweb-uavnav.sh
 
-RUN apt-get install -y --no-install-recommends ros-kinetic-web-video-server \
-        ros-kinetic-image-geometry
-        
 
 RUN curl -fSsL -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
@@ -113,6 +110,9 @@ RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
     echo "export GAZEBO_MODEL_PATH=:/root/src/Firmware/Tools/sitl_gazebo/models" >> ~/.profile && \
     echo "export GAZEBO_RESOURCE_PATH=:/root/src/Firmware/Tools/sitl_gazebo/media" >> ~/.profile && \
     echo "export PYTHONPATH=/root/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/jade/lib/python2.7/dist-packages" >> ~/.profile
+
+RUN apt-get install -y --no-install-recommends ros-kinetic-web-video-server \
+        ros-kinetic-image-geometry
 
 WORKDIR /root
 
