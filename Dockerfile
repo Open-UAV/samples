@@ -111,7 +111,8 @@ RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.profile && \
     echo "export GAZEBO_RESOURCE_PATH=:/root/src/Firmware/Tools/sitl_gazebo/media" >> ~/.profile && \
     echo "export PYTHONPATH=/root/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/jade/lib/python2.7/dist-packages" >> ~/.profile
 
-RUN apt-get install -y --no-install-recommends ros-kinetic-web-video-server \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ros-kinetic-web-video-server \
         ros-kinetic-image-geometry
 
 WORKDIR /root
